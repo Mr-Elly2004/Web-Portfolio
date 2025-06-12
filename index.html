@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bahzad Mohamad | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-light: #f1f5f9;
+      --text-dark: #f8fafc;
+      --text-light: #0f172a;
+      --accent: #38bdf8;
+      --card-dark: #1e293b;
+      --card-light: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background 1.5s ease, color 0.5s ease;
+    }
+
+    .light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background-color: var(--card-dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .light-mode header {
+      background-color: var(--card-light);
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    .profile-img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 2rem auto;
+      display: block;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .section p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .skills, .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    
+
+    .skill, .project {
+      background-color: var(--card-dark);
+      padding: 1.2rem 1.5rem;
+      border-radius: 1rem;
+      text-align: left;
+      width: 280px;
+      color: var(--text-dark);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .light-mode .skill,
+    .light-mode .project {
+      background-color: var(--card-light);
+      color: var(--text-light);
+    }
+
+    .skill:hover, .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .skill i, .project i {
+      margin-right: 0.6rem;
+      color: var(--accent);
+    }
+
+    .project h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--card-dark);
+      margin-top: 3rem;
+    }
+
+    .light-mode footer {
+      background-color: var(--card-light);
+    }
+
+    footer a {
+      color: var(--accent);
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #0ea5e9;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      transform: rotate(20deg);
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      background-color: var(--accent);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #0ea5e9;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: var(--card-dark);
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        padding: 1rem;
+        border-radius: 0.8rem;
+      }
+
+      .light-mode nav {
+        background-color: var(--card-light);
+      }
+      
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+      .skills .skill {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  flex: 1 1 45%;
+}
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Bahzad</h1>
+    <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <i class="fas fa-moon toggle-btn" onclick="toggleMode()" id="modeIcon"></i>
+    </nav>
+  </header>
+
+  <img src="image.jpg" alt="Bahzad Mohamad" class="profile-img" />
+
+  <section id="about" class="section">
+    <h2>👨‍💻 About Me</h2>
+    <p>I'm Bahzad Mohamad, a Computer Science student at the University of Sulaymaniyah. 
+      I'm a developer with skills in web development, networking,linuxand Microsoft Office.
+       I enjoy creating practical solutions and constantly learning new technologies.</p>
+  </section>
+  
+
+  <section id="skills" class="section">
+    <h2>🛠️ Skills</h2>
+    <div class="skills">
+      <div class="skill"><i class="fab fa-html5"></i>HTML</div>
+      <div class="skill"><i class="fab fa-css3-alt"></i>CSS</div>
+      <div class="skill"><i class="fab fa-js"></i>JavaScript</div>
+      <div class="skill"><i class="fas fa-code"></i>jQuery</div>
+      <div class="skill"><i class="fab fa-bootstrap"></i>Bootstrap</div>
+      <div class="skill"><i class="fas fa-wind"></i>Tailwind</div>
+      <div class="skill"><i class="fab fa-react"></i>React</div>
+      <div class="skill"><i class="fab fa-php"></i>PHP</div>
+      <div class="skill"><i class="fas fa-database"></i>MySQL</div>
+      <div class="skill"><i class="fa-brands fa-python"></i>Python</div>
+      <div class="skill"><i class="fa-brands fa-java"></i>java</div>
+      <div class="skill"><i class="fa-solid fa-code-commit"></i>AspectJ</div>
+      <div class="skill"><i class="fa-brands fa-linux"></i>Linux</div>
+      <div class="skill"><i class="fa-solid fa-network-wired"></i>Networking</div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>📂 Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3><i class="fa-solid fa-chalkboard-user"></i> Onile Learning Platform (Feducation)</h3>
+        <p>Web app that allows students to learn coding and computer skills through video tutorials.</p>
+      </div>
+      <div class="project">
+        <h3><i class="fas fa-prescription-bottle-alt"></i> Pharmacy Management System</h3>
+        <p>An offline pharmacy system using HTML, CSS, JavaScript, PHP & mySQL. Manages sales, stock, reports, and user shifts.</p>
+      </div>
+      <div class="project">
+        <h3><i class="fa-solid fa-keyboard"></i> Typing Test</h3>
+        <p>A Typing Test using Java , AspectJ for test typing speed.</p>
+      </div>
+      <div class="project">
+        <h3><i class="fas fa-weight"></i> BMI Calculator</h3>
+        <p>Java GUI & AspectJ project with BMI tracking, history, and health advice based on user data.</p>
+      </div>
+      <div class="project">
+        <h3><i class="fa-solid fa-shop"></i> Market Management System</h3>
+        <p>An offline market system using HTML, CSS, JavaScript, PHP & mySQL. Manages sales, stock, reports, and user shifts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+     <h2>📫 Contact Me</h2>
+    <div class="contact-form">
+      <form action="mailto:bahzadmohammed2004@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <a href="mailto:bahzadmohammed2004@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com/bahzad.mohammed.2025" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://github.com/Mr-Elly2004" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+      const icon = document.getElementById("modeIcon");
+      icon.classList.toggle("fa-moon");
+      icon.classList.toggle("fa-sun");
+    }
+
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
